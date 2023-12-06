@@ -92,7 +92,7 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => {
 
-  return arr.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'case' }));
+  return arr.sort();
 
   // Solution code here...
 };
