@@ -40,6 +40,9 @@ Write a function named removeThree that takes an index and an array. The functio
 ------------------------------------------------------------------------------------------------ */
 
 const removeThree = (idx, arr) => {
+
+  arr.splice(idx, 3);
+
   // Solution code here...
 };
 
@@ -139,6 +142,11 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
+
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    result.push(recipe.ingredients[i].split(' ')[2]);
+  }
+
   // Solution code here...
   return result;
 };
