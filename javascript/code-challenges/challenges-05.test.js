@@ -35,12 +35,11 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
 const courseInfo = {
-  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
-  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
-  finalExam: true
-};
 
-const getCourseKeys = (obj) => {
+  getCourseKeys: () => {
+    return Object.keys(courseInfo);
+  }
+
   // Solution code here...
 };
 
@@ -53,6 +52,15 @@ Write a function named checkValues that takes in an object and a value and retur
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
+
+  const values = Object.values(obj);
+  for (let i = 0; i < values.length; i++) {
+    if (values[i] === value) {
+      return true;
+    }
+  }
+
+  return false;
   // Solution code here...
 };
 
@@ -76,6 +84,14 @@ HR has asked you to change the data to make it easier to print so that it looks 
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
+
+  const newArr = [];
+  const keys = Object.keys(obj);
+  for (let i = 0; i < keys.length; i++) {
+    newArr.push(`${keys[i]}: ${obj[keys[i]]}`);
+  }
+
+  return newArr;
   // Solution code here...
 };
 
@@ -132,6 +148,11 @@ const characters = [
 
 const getHouses = (arr) => {
   let houses = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    houses.push(arr[i].house);
+  }
+
   // Solution code here...
   return houses;
 };
@@ -149,6 +170,15 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
+
+  const values = Object.values(arr);
+  for (let i = 0; i < values.length; i++) {
+    if (values[i].name === character && values[i].children.length > 0) {
+      return true;
+    }
+  }
+
+  return false;
   // Solution code here...
 
 };
