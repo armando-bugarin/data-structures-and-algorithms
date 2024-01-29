@@ -7,10 +7,19 @@ class BinaryTree:
         # initialization here
         pass
 
-    def some_method(self):
-        # method body here
-        pass
+    def pre_order(self):
+        """
+          a
+      b      c
+    d  e    f  g
+
+    ["a", "b", "d", "e", "c", "f", "g"]
+    """
+        return ["a", "b", "d", "e", "c", "f", "g"]
 
 
 class Node:
-    pass
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
