@@ -22,25 +22,33 @@ Determine whether or not the value of each node is divisible by 3, 5 or both. Cr
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
-The time complexity (Big O) of the breadth-first traversal algorithm you've implemented is O(N), where N is the number of nodes in the binary tree. In the worst case, you have to visit each node once.
+Traversing each node in the k-ary tree has a time complexity of O(N), where N is the number of nodes in the tree. The space complexity is O(N).
 
 ## Solution
 <!-- Show how to run your code, and examples of it in action -->
 
-def breadth_first(tree):
-    result = []
-    if not tree.root:
-        return result
+def fizz_buzz_tree(tree):
+    def fizz_buzz_recursive(node):
+        if not node:
+            return None
 
-    queue = [tree.root]
+        value = node.value
 
-    while queue:
-        current_node = queue.pop(0)
-        result.append(current_node.value)
+        if value % 3 == 0 and value % 5 == 0:
+            node.value = "FizzBuzz"
+        elif value % 3 == 0:
+            node.value = "Fizz"
+        elif value % 5 == 0:
+            node.value = "Buzz"
+        else:
+            node.value = str(value)
 
-        if current_node.left:
-            queue.append(current_node.left)
-        if current_node.right:
-            queue.append(current_node.right)
+        for child in node.children:
+            fizz_buzz_recursive(child)
 
-    return result
+    # Clone the input tree to avoid modifying the original tree
+    cloned_tree = tree.clone()
+
+    fizz_buzz_recursive(cloned_tree.root)
+
+    return cloned_tree
