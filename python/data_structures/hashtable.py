@@ -18,8 +18,8 @@ class Hashtable:
 
     def set(self, key, value):
         """
-        Hashes the key and sets the key and value pair in the table.
-        Handles collisions as needed. If a given key already exists, replaces its value.
+        Sets the key and value pair in the table, handling collisions as needed.
+        If a given key already exists, replaces its value.
         """
         index = self.hash(key)
         if self._buckets[index] is None:
@@ -34,6 +34,7 @@ class Hashtable:
     def get(self, key):
         """
         Retrieves the value associated with the given key in the table.
+        Raises KeyError if the key is not found.
         """
         index = self.hash(key)
         if self._buckets[index] is not None:
@@ -56,10 +57,10 @@ class Hashtable:
 
     def keys(self):
         """
-        Returns a collection of keys in the hashtable.
+        Returns a list of all unique keys that exist in the hashtable.
         """
         all_keys = []
         for bucket in self._buckets:
             if bucket is not None:
                 all_keys.extend(item[0] for item in bucket)
-        return all_keys
+        return list(set(all_keys))
