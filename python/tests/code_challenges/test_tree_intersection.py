@@ -8,7 +8,7 @@ def test_exists():
     assert tree_intersection
 
 
-@pytest.mark.skip("TODO")
+# @pytest.mark.skip("TODO")
 def test_tree_intersection():
 
     tree_a = BinaryTree()
@@ -40,3 +40,42 @@ def add_values_to_empty_tree(tree, values):
         node.right = Node(values.pop()) if values else None
         q.enqueue(node.left)
         q.enqueue(node.right)
+
+def test_tree_intersection_empty_trees():
+    tree_a = BinaryTree()
+    tree_b = BinaryTree()
+
+    actual = tree_intersection(tree_a, tree_b)
+    expected = []
+
+    assert actual == expected
+
+
+def test_tree_intersection_no_common_values():
+    tree_a = BinaryTree()
+    values_a = [1, 2, 3, 4, 5]
+    add_values_to_empty_tree(tree_a, values_a)
+
+    tree_b = BinaryTree()
+    values_b = [6, 7, 8, 9, 10]
+    add_values_to_empty_tree(tree_b, values_b)
+
+    actual = tree_intersection(tree_a, tree_b)
+    expected = []
+
+    assert actual == expected
+
+
+def test_tree_intersection_some_common_values():
+    tree_a = BinaryTree()
+    values_a = [1, 2, 3, 4, 5, 6, 7]
+    add_values_to_empty_tree(tree_a, values_a)
+
+    tree_b = BinaryTree()
+    values_b = [7, 8, 9, 10]
+    add_values_to_empty_tree(tree_b, values_b)
+
+    actual = tree_intersection(tree_a, tree_b)
+    expected = [7]
+
+    assert actual == expected
