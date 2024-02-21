@@ -2,7 +2,7 @@ import pytest
 from data_structures.hashtable import Hashtable
 
 
-def test_exists():
+def test_exists(): 
     assert Hashtable
 
 
