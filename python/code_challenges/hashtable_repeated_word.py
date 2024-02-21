@@ -16,3 +16,4 @@ def first_repeated_word(input_string):
             hashtable.set(cleaned_word, True)
 
     return None
+ 
